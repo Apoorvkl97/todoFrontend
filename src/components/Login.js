@@ -46,6 +46,7 @@ const Login = () => {
             body : JSON.stringify(body)
         })
         let result = await response.json()
+        
         if(typeof result !== 'string'){
             setLoader(false)
             localStorage.setItem("userId",result)
