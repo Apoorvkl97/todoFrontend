@@ -4,7 +4,7 @@ import './Panel.css'
 const Panel = () => {
   return (
     <div className='panel'>
-        Panel
+        <span>Projects</span>
     </div>
   )
 }

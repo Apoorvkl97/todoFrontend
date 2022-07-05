@@ -3,7 +3,7 @@ import './List.css'
 import CardAdder from './CardAdder'
 import Card from './Card'
 
-const List = ({category,data,perform,getData}) => {
+const List = ({category,data,perform,getData,cardClick}) => {
     const dragDrop = (e) => {
         localStorage.setItem('dropCategory',e.target.getAttribute("data-id"))
       };
@@ -18,7 +18,7 @@ const List = ({category,data,perform,getData}) => {
         <h3>{category} </h3>
         <CardAdder category={category} getData={getData} />
         {data.map((i) => 
-            <Card key={i.itemId} title={i.title} description={i.description} itemId={i.itemId} perform={perform} />
+            <Card key={i.itemId} title={i.title} description={i.description} itemId={i.itemId} perform={perform} cardClick={cardClick} />
         )}
     </div>
   )

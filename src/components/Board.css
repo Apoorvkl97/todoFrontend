@@ -1,3 +1,7 @@
 .board {
     display: flex;
 }
+
+.boardTitle{
+    margin: 50px 0 0 20px;
+}
