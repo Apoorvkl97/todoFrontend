@@ -16,7 +16,7 @@ const Board = () => {
         setIsCardClick(true)
     }
     const getData = async() => {
-        const response = await fetch(`http://localhost:5000/entries`, {
+        const response = await fetch(`${process.env.REACT_APP_URLCONSTANT}/entries`, {
         method : 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ const Board = () => {
             const dragged = Number(localStorage.getItem('beingDragged'))
             const dropped = localStorage.getItem('dropCategory')
             if(dropped !== 'null'){
-                const response = await fetch(`http://localhost:5000/entry/${dragged}/update`, {
+                const response = await fetch(`${process.env.REACT_APP_URLCONSTANT}/entry/${dragged}/update`, {
                     method : 'POST',
                     headers: {
                         'Content-Type': 'application/json'

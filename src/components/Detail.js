@@ -7,7 +7,7 @@ const Detail = ({clickedCardId,getData,setIsCardClick}) => {
     const [descriptionInput, setDescriptionInput] = useState('')
 
     const getEntry = async() => {
-        const response = await fetch(`http://localhost:5000/entry/${clickedCardId}`, {
+        const response = await fetch(`${process.env.REACT_APP_URLCONSTANT}/entry/${clickedCardId}`, {
         method : 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ const Detail = ({clickedCardId,getData,setIsCardClick}) => {
     }
 
     const performEffect = async() => {
-        const response = await fetch(`http://localhost:5000/entry/${clickedCardId}/update`, {
+        const response = await fetch(`${process.env.REACT_APP_URLCONSTANT}/entry/${clickedCardId}/update`, {
         method : 'POST',
         headers: {
             'Content-Type': 'application/json'

@@ -7,14 +7,16 @@
 }
 
 .loginImage {
-    width: 50%;
+    width: 40%;
     height: 80%;
+    padding-left: 10%;
 }
 
 .loginForm {
-    border: 1px solid rgba(26, 59, 88, 0.24);
-    border-radius: 40px;
+    border: 2px solid rgba(26, 59, 88, 0.24);
+    border-radius: 65px;
     padding: 30px;
+    margin-right: 40px;
 }
 
 .isLogin {
@@ -67,4 +69,14 @@ h3{
     background: #329C89;
     color: white;
     padding: 10px;
+    position: relative;
+}
+
+.error {
+    font-size: 11px;
+    color: #F65B2A;
+}
+
+.loginFields input.red {
+    border: 1px solid #F65B2A;
 }
