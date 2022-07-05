@@ -1,0 +1,39 @@
+.addButton{
+    width: 100%;
+    margin: 5px 0;
+    padding: 6px;
+    border: 1px solid #ECF3F3;
+    background-color: #ECF3F3;
+    border-radius: 7px;
+    color: #329C89;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.cardInput {
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+textarea {
+    border: none;
+    resize: none;
+    font-family: Poppins;
+    width: 100%;
+}
+
+.cardInput input{
+    border: none;
+    display: inline;
+    resize: none;
+    font-family: Poppins;
+    width: 95%
+}
+
+.cardInput span{
+    cursor: pointer;
+    color: gray;
+    font-family: Poppins;
+}
