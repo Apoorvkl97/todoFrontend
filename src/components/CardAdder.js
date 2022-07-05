@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import './CardAdder.css'
 
-const CardAdder = ({category}) => {
+const CardAdder = ({category,getData}) => {
     const [isClick, setIsClick] = useState(false)
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
@@ -15,7 +15,7 @@ const CardAdder = ({category}) => {
         const itemId = generateID(category)
         const createdOn = new Date().toDateString()
         const body = {userId, itemId, title, description, createdOn, category}
-        const getData = async() => {
+        const addEntry = async() => {
             const response = await fetch(`http://localhost:5000/entry`, {
             method : 'POST',
             headers: {
@@ -25,12 +25,12 @@ const CardAdder = ({category}) => {
         })
         let result = await response.json()
         if(result){
-            console.log('Saved')
+            getData()
         } else {
             alert('Error occured')
         }
         }
-        getData()
+        addEntry()
         setIsClick(false)
         setTitle('')
         setDescription('')
