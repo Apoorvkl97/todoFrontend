@@ -15,7 +15,7 @@ const Login = () => {
     const [wrLogin, setwrLogin] = useState(false)
 
     const checkEmail = () => {
-        if(email.indexOf('@')<0 || email.indexOf('.')<email.indexOf('@')){
+        if(email.indexOf('@')<0 || email.indexOf('.')<0){
             setwrEmail(true)
             return false
         } else {
