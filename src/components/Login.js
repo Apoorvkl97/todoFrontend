@@ -101,7 +101,7 @@ useEffect(() => {
         <div className='loginFields'>
         {isLogin && <div>
             <h3>To Continue</h3>
-            <span>We need your name and email</span>
+            <span>We need your registered email and password</span>
         </div>}
         {!isLogin && <>
             <input type='text' value = {fullName} onChange = {(e) => setFullName(e.target.value)} placeholder='Full Name' className={wrLogin?'red':''}/>
