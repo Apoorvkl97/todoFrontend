@@ -6,10 +6,11 @@ const Detail = ({clickedCardId,getData,setIsCardClick}) => {
     const [cardData, setCardData] = useState({})
     const [titleInput, setTitleInput] = useState('')
     const [descriptionInput, setDescriptionInput] = useState('')
-    const [loader, setLoader] = useState(false)
+    const [loader1, setLoader1] = useState(false)
+    const [loader2, setLoader2] = useState(false)
 
     const getEntry = async() => {
-        setLoader(true)
+        setLoader1(true)
         const response = await fetch(`${process.env.REACT_APP_URLCONSTANT}/entry/${clickedCardId}`, {
         method : 'POST',
         headers: {
@@ -18,7 +19,7 @@ const Detail = ({clickedCardId,getData,setIsCardClick}) => {
     })
     let result = await response.json()
     if(result){
-        setLoader(false)
+        setLoader1(false)
         setCardData(result)
         setTitleInput(result.title)
         setDescriptionInput(result.description)
@@ -28,7 +29,7 @@ const Detail = ({clickedCardId,getData,setIsCardClick}) => {
     }
 
     const performEffect = async() => {
-        setLoader(true)
+        setLoader1(true)
         const response = await fetch(`${process.env.REACT_APP_URLCONSTANT}/entry/${clickedCardId}/update`, {
         method : 'POST',
         headers: {
@@ -41,7 +42,25 @@ const Detail = ({clickedCardId,getData,setIsCardClick}) => {
     })
     let result = await response.json()
     if(result){
-        setLoader(false)
+        setLoader1(false)
+        getData()
+        setIsCardClick(false)
+    } else {
+        alert('Error occured')
+    }
+    }
+
+    const deleteEffect = async() => {
+        setLoader2(true)
+        const response = await fetch(`${process.env.REACT_APP_URLCONSTANT}/entry/${clickedCardId}/delete`, {
+        method : 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    let result = await response.json()
+    if(result){
+        setLoader2(false)
         getData()
         setIsCardClick(false)
     } else {
@@ -60,8 +79,8 @@ const Detail = ({clickedCardId,getData,setIsCardClick}) => {
             {cardData.createdOn && <div className='createdOn' > <label>Created On</label> <span className='createdOnDate' > {' '+ cardData.createdOn} </span> </div>}
             <label>Description</label>
             <textarea className='descriptionInput' rows='5' value = {descriptionInput} onChange = {(e) => setDescriptionInput(e.target.value)} placeholder='Description' />
-            <button style={{position:"relative"}} className='addButton' onClick={performEffect} > {clickedCardId?"Update":"+"} {loader && <Loader color="black"/>} </button>
-            
+            <button style={{position:"relative"}} className='addButton' onClick={performEffect} > {clickedCardId?"Update":"+"} {loader1 && <Loader color="black"/>} </button>
+            <button style={{position:"relative"}} className='delButton' onClick={deleteEffect} > {clickedCardId?"Delete":"-"} {loader2 && <Loader color="black"/>} </button>
         </div>
     </div>
   )
