@@ -80,6 +80,14 @@ useEffect(() => {
     }
 },[])
 
+useEffect(() => {
+    setwrLogin(false)
+    setwrEmail(false)
+    setFullName("")
+    setEmail("")
+    setPassword("")
+}, [isLogin])
+
   return (
     <div className='login'>
     <div className='loginImage'>
@@ -107,7 +115,9 @@ useEffect(() => {
             <div className='loginbuttonGroup' >
             {wrEmail && <div className='error'>Please enter valid email</div> }
             {wrLogin && <div className='error'>Your email and password do not match</div>}
-            {!isLogin && <button onClick = {submitHandler} >Sign Up</button>}
+            {!isLogin && <button onClick = {submitHandler} >Sign Up
+            {loader && <Loader color="black"/>}
+            </button>}
             {isLogin && <button onClick = {submitHandler} >Login
             {loader && <Loader color="black"/>}
             </button>}

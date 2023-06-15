@@ -4,4 +4,17 @@
 
 .boardTitle{
     margin: 50px 0 0 20px;
+    position: relative;
+}
+
+.boardTitle div{
+    position: relative;
+    display: inline-block;
+    width: 11px;
+}
+
+.boardTitle .loader{
+    right: auto;
+    left: 10px;
+    top: 2px;
 }

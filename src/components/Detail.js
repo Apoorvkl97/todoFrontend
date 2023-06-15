@@ -1,12 +1,15 @@
 import React, {useEffect, useState} from 'react'
 import './Detail.css'
+import Loader from './Loader'
 
 const Detail = ({clickedCardId,getData,setIsCardClick}) => {
     const [cardData, setCardData] = useState({})
     const [titleInput, setTitleInput] = useState('')
     const [descriptionInput, setDescriptionInput] = useState('')
+    const [loader, setLoader] = useState(false)
 
     const getEntry = async() => {
+        setLoader(true)
         const response = await fetch(`${process.env.REACT_APP_URLCONSTANT}/entry/${clickedCardId}`, {
         method : 'POST',
         headers: {
@@ -15,6 +18,7 @@ const Detail = ({clickedCardId,getData,setIsCardClick}) => {
     })
     let result = await response.json()
     if(result){
+        setLoader(false)
         setCardData(result)
         setTitleInput(result.title)
         setDescriptionInput(result.description)
@@ -24,6 +28,7 @@ const Detail = ({clickedCardId,getData,setIsCardClick}) => {
     }
 
     const performEffect = async() => {
+        setLoader(true)
         const response = await fetch(`${process.env.REACT_APP_URLCONSTANT}/entry/${clickedCardId}/update`, {
         method : 'POST',
         headers: {
@@ -36,7 +41,9 @@ const Detail = ({clickedCardId,getData,setIsCardClick}) => {
     })
     let result = await response.json()
     if(result){
+        setLoader(false)
         getData()
+        setIsCardClick(false)
     } else {
         alert('Error occured')
     }
@@ -49,10 +56,12 @@ const Detail = ({clickedCardId,getData,setIsCardClick}) => {
     <div className='detail'>
         <div className='cardInput'>
             <input className='titleInput' value = {titleInput} onChange = {(e) => setTitleInput(e.target.value)} placeholder='Give your task a title' />
-            <span onClick={() => setIsCardClick(false)} >x</span> <br />
+            <span className='closeBtn' onClick={() => setIsCardClick(false)} >x</span> <br />
+            {cardData.createdOn && <div className='createdOn' > <label>Created On</label> <span className='createdOnDate' > {' '+ cardData.createdOn} </span> </div>}
             <label>Description</label>
             <textarea className='descriptionInput' rows='5' value = {descriptionInput} onChange = {(e) => setDescriptionInput(e.target.value)} placeholder='Description' />
-            <button className='addButton' onClick={performEffect} >+</button>
+            <button style={{position:"relative"}} className='addButton' onClick={performEffect} > {clickedCardId?"Update":"+"} {loader && <Loader color="black"/>} </button>
+            
         </div>
     </div>
   )
