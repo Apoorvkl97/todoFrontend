@@ -84,7 +84,7 @@ const Board = () => {
         }
     },[entries])
   return (
-    <div style={{display:'flex',flexDirection:'column'}}>
+    <div className='boardContainer' >
     <h3 className='boardTitle'>Projects <div>{loader && <Loader color="black"/>}</div> </h3>
         <div className='board'>
         <List category='To Do' data={toDo} perform={perform} getData={getData} cardClick={cardClick} />

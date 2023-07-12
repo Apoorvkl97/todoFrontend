@@ -26,14 +26,18 @@ const CardAdder = ({category,getData}) => {
         let result = await response.json()
         if(result){
             getData()
+            setIsClick(false)
+        setTitle('')
+        setDescription('')
         } else {
             alert('Error occured')
+            setIsClick(false)
+        setTitle('')
+        setDescription('')
         }
         }
         addEntry()
-        setIsClick(false)
-        setTitle('')
-        setDescription('')
+        
         }
     // document.addEventListener('click', (e) => {
     //     if(e.target.className!=='' && e.target.className!=='addButton' && e.target.className!=='inpField'){
@@ -47,7 +51,8 @@ const CardAdder = ({category,getData}) => {
     <div className='cardAdder'>
         {!isClick && <button className='addButton' onClick={() => setIsClick(true)} >+</button>}
         {isClick && <div className='cardInput'>
-            <input className='inpField' value = {title} onChange = {(e) => setTitle(e.target.value)} placeholder='Give your task a title' />
+            <input className='inpField titleField' value = {title} onChange = {(e) => setTitle(e.target.value)} placeholder='Give your task a title' />
+            <input className='mob-inpField' value = {title} onChange = {(e) => setTitle(e.target.value)} placeholder='Title' />
             <span onClick={() => setIsClick(false)} >x</span>
             <textarea className='inpField' rows='5' value = {description} onChange = {(e) => setDescription(e.target.value)} placeholder='Description' />
             <button className='addButton' onClick={updateEntry} >+</button>

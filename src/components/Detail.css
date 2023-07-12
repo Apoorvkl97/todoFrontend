@@ -60,3 +60,14 @@
     font-size: 20px;
     cursor: pointer;
 }
+
+@media only screen and (max-width:768px){
+    .detail{
+        width: 80vw;
+        padding-left: 0;
+    }
+
+    .cardInput .titleInput{
+        font-size: 18px;
+    }
+}

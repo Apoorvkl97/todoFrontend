@@ -1,3 +1,8 @@
+.boardContainer{
+    display: flex;
+    flex-direction: column;
+}
+
 .board {
     display: flex;
 }
@@ -17,4 +22,13 @@
     right: auto;
     left: 10px;
     top: 2px;
+}
+
+@media only screen and (max-width:768px){
+    .board{
+        justify-content: space-evenly;
+    }
+    .boardContainer{
+        width: 100%;
+    }
 }

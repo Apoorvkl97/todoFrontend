@@ -10,6 +10,10 @@
     cursor: pointer;
 }
 
+.cardInput .mob-inpField{
+    display: none;
+}
+
 .cardInput {
     background-color: white;
     border-radius: 5px;
@@ -36,4 +40,19 @@ textarea {
     cursor: pointer;
     color: gray;
     font-family: Poppins;
+}
+
+@media only screen and (max-width:768px){
+    .cardInput .mob-inpField{
+        display: inline;
+        width: 80%;
+    }
+
+    .cardInput .titleField{
+        display: none;
+    }
+
+    .cardInput{
+        padding:5px;
+    }
 }

@@ -81,3 +81,32 @@ h3{
 .loginFields input.red {
     border: 1px solid #F65B2A;
 }
+
+@media only screen and (max-width:768px){
+    .login{
+        justify-content: center;
+    }
+
+    .loginForm{
+        margin-right: 0;
+        padding:10px;
+        border-radius: 30px;
+    }
+
+    .loginImage{
+        display:none;
+    }
+
+    .loginFields input[type='text'],input[type='email'],input[type='password']{
+        width: 70vw;
+        box-sizing: border-box;
+    }
+
+    .loginFields{
+        margin:10px 20px;
+    }
+
+    .loginFields button{
+        width: 70vw;
+    }
+}
